@@ -6,6 +6,7 @@ class Post(models.Model):
     detail = models.TextField(max_length=1000) #자세한 내용
     created_at = models.DateTimeField() #작성날짜
 
+    image = models.ImageField(upload_to='grow/images/%Y/%m/%d', blank=True) #이미지
     def __str__(self):
         return f'{self.created_at} {self.title}'
 
