@@ -1,11 +1,62 @@
-<!Doctype html>
+{% extends 'advance/base.html' %}
 {% load static %}
 
-<html>
-    <head>
-        <title> {{post.pk}} </title>
-    </head>
-    <body>
+{% block p_title %}
+    {{post.title}} by {{post.author}}
+{% endblock %}
 
-    </body>
-</html>
+    {% block main %}
+        <div id="post-area">
+            <!-- Page content-->
+            <div class="container mt-5">
+                <div class="row">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                            <h5 class="text-muted">{{ post.hook_text }}</h5>
+                            <!-- Post meta content-->
+                            <div class="text-muted mb-2">
+                                by {{ post.author | upper }} {{post.created_at | date:"Y-m-d h:m:s"}}
+
+                                <!-- edit button -->
+                                {% if user.is_authenticated and user == post.author %}
+                                    <a class="btn btn-success btn-sm float-right"
+                                       href="/grow/update_post/{{ post.pk }}/" role="button">
+                                        <i class="fas fa-pen"></i> Edit Post </a>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <hr>
+                        </header>
+                        <!-- file -->
+                        <div class="container">
+                            {% if post.file_upload %}
+                                <a href="{{post.file_upload.url}}" class="btn btn-outline-dark float-right mb-3" role="button" download>
+                                    File Download {{post.get_file_name}}
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="container">
+                            <!-- Preview image figure-->
+                            <figure class="mb-4">
+                                {% if post.image %}
+                                <img class="img-fluid rounded" src="{{ post.image.url }}" alt="{{post.title}}의 image" />
+                                {% else %}
+                                <img class="img-fluid rounded" src="https://picsum.photos/seed/{{post.pk}}/900/400" alt="random image" />
+                                {% endif %}
+                            </figure>
+                            <!-- Post content-->
+                            <section class="mb-5">
+                                <p class="fs-5 mb-4">{{ post.detail | linebreaks}}</p>
+                                <br><br>
+                            </section>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
