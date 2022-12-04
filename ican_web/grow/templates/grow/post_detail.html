@@ -6,46 +6,48 @@
 {% endblock %}
 
     {% block main %}
-        <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <!-- Post content-->
-                <article>
-                    <!-- Post header-->
-                    <header class="mb-4">
-                        <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
-                        <h5 class="text-muted">{{ post.hook_text }}</h5>
-                        <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">
-                            {{post.created_at | date:"Y-m-d h:m:s"}}
-                        </div>
-                        <hr>
-                    </header>
-                    <!-- file -->
-                    <div class="container">
-                        {% if post.file_upload %}
-                            <a href="{{post.file_upload.url}}" class="btn btn-outline-dark float-right mb-3" role="button" download>
-                                File Download {{post.get_file_name}}
-                            </a>
-                        {% endif %}
-                    </div>
-                    <div class="container">
-                        <!-- Preview image figure-->
-                        <figure class="mb-4">
-                            {% if post.image %}
-                            <img class="img-fluid rounded" src="{{ post.image.url }}" alt="{{post.title}}의 image" />
-                            {% else %}
-                            <img class="img-fluid rounded" src="https://picsum.photos/seed/{{post.pk}}/900/400" alt="random image" />
+        <div id="post-area">
+            <!-- Page content-->
+            <div class="container mt-5">
+                <div class="row">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                            <h5 class="text-muted">{{ post.hook_text }}</h5>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">
+                                {{post.created_at | date:"Y-m-d h:m:s"}}
+                            </div>
+                            <hr>
+                        </header>
+                        <!-- file -->
+                        <div class="container">
+                            {% if post.file_upload %}
+                                <a href="{{post.file_upload.url}}" class="btn btn-outline-dark float-right mb-3" role="button" download>
+                                    File Download {{post.get_file_name}}
+                                </a>
                             {% endif %}
-                        </figure>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <p class="fs-5 mb-4">{{ post.detail | linebreaks}}</p>
-                            <br><br>
-                        </section>
-                    </div>
-                </article>
+                        </div>
+                        <div class="container">
+                            <!-- Preview image figure-->
+                            <figure class="mb-4">
+                                {% if post.image %}
+                                <img class="img-fluid rounded" src="{{ post.image.url }}" alt="{{post.title}}의 image" />
+                                {% else %}
+                                <img class="img-fluid rounded" src="https://picsum.photos/seed/{{post.pk}}/900/400" alt="random image" />
+                                {% endif %}
+                            </figure>
+                            <!-- Post content-->
+                            <section class="mb-5">
+                                <p class="fs-5 mb-4">{{ post.detail | linebreaks}}</p>
+                                <br><br>
+                            </section>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     {% endblock %}
