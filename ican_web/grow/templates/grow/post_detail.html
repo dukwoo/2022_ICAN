@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block p_title %}
-    {{post.title}}
+    {{post.title}} by {{post.author}}
 {% endblock %}
 
     {% block main %}
@@ -18,9 +18,23 @@
                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
                             <h5 class="text-muted">{{ post.hook_text }}</h5>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">
-                                {{post.created_at | date:"Y-m-d h:m:s"}}
+                            <div class="text-muted mb-2">
+                                by {{ post.author | upper }} {{post.created_at | date:"Y-m-d h:m:s"}}
+
+                                <!-- edit button -->
+                                {% if user.is_authenticated and user == post.author %}
+                                    <a class="btn btn-info btn-sm float-right"
+                                       href="/grow/update_post/{{ post.pk }}/" role="button">
+                                        <i class="fas fa-pen"></i> Edit Post </a>
+                                    </a>
+                                {% endif %}
                             </div>
+
+
+
+
+
+
                             <hr>
                         </header>
                         <!-- file -->
