@@ -7,6 +7,8 @@ class Post(models.Model):
     created_at = models.DateTimeField() #작성날짜
 
     image = models.ImageField(upload_to='grow/images/%Y/%m/%d', blank=True) #이미지
+    file_upload = models.FileField(upload_to='grow/files/%Y/%m/%d', blank=True)
+
     def __str__(self):
         return f'{self.created_at} {self.title}'
 
