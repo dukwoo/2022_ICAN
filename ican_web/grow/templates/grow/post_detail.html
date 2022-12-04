@@ -23,18 +23,12 @@
 
                                 <!-- edit button -->
                                 {% if user.is_authenticated and user == post.author %}
-                                    <a class="btn btn-info btn-sm float-right"
+                                    <a class="btn btn-success btn-sm float-right"
                                        href="/grow/update_post/{{ post.pk }}/" role="button">
                                         <i class="fas fa-pen"></i> Edit Post </a>
                                     </a>
                                 {% endif %}
                             </div>
-
-
-
-
-
-
                             <hr>
                         </header>
                         <!-- file -->
