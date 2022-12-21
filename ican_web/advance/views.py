@@ -15,8 +15,8 @@ def login(request):
     )
 
 def mypage(request):
-
     return render(
         request,
         'advance/mypage.html',
     )
+

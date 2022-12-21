@@ -5,7 +5,7 @@
         <span>Study with 이름</span>
     </div>
     <div class="text-center py-1">
-        <a type="button" class="btn btn-success" id="btn_mypage">
+        <a type="button" class="btn btn-success" id="btn_mypage" href="/mypage/">
             마이페이지
         </a>
     </div>
@@ -38,4 +38,64 @@
             </div>
         </li >
     </ul>
+
+    <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #C730F5;">
+                {{user.username}}
+              </a>
+              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" style="color: #C730F5;" href="/accounts/logout/">LogOut</a>
+              </div>
+          </li>
+
+          {% else %}
+          <li class="nav-item">
+            <a type="button" class="btn btn-success" href="#" data-toggle="modal" data-target="#loginModal">
+              로그인
+            </a>
+          </li>
+          {% endif %}
+        </ul>
 </nav>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-right-to-bracket"></i> LogIn</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-6">
+              <a role="button" class="btn btn-outline-dark btn-block btn-sm"
+              href="/accounts/login/">
+                <i class="fa-regular fa-envelope"></i>
+                LogIn with Email
+              </a>
+            </div>
+
+            <div class="col-6">
+              <a role="button" class="btn btn-outline-dark btn-block btn-sm"
+              href="/accounts/signup/">
+                <i class="fa-regular fa-envelope"></i>
+                SignUp With Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal 끝 -->

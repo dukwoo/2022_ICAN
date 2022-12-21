@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('grow/', include('grow.urls')), #목록, 상세페이지
+    path('accounts/', include('allauth.urls')),
     path('', include('advance.urls')) #로그인페이지, 마이페이지(달력)
 ]
 
