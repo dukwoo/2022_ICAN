@@ -3,40 +3,51 @@
 
 {% block p_title %} Study_with_US {% endblock %}
 
+<div class="text-center">
+    <span>안녕</span>
+</div>
+
 {% block main %}
     <div id="post-area">
         <!-- Page content-->
-        <div class="container mt-5">
+        <div class="container m-5">
             <div class="row">
                 {% for p in post_list %}
-                <div class="container">
+                <div class="container m-5" id="list" style="background-color: #aac2ad">
                 <!-- Post content-->
-                    <div class="container">
-                        <!-- Preview image figure-->
-                        <figure class="mb-4">
+                    <!-- Preview image figure-->
+                    <div class="text-center" id="list_image">
+                        <figure class="mt-5">
                             {% if p.image %}
-                            <img class="img-fluid rounded" src="{{ p.image.url }}" alt="{{post.title}}의 image" />
+                            <img class="img-fluid rounded" src="{{ p.image.url }}" alt="{{p.title}}의 image" />
                             {% else %}
-                            <img class="img-fluid rounded" src="https://picsum.photos/seed/{{post.pk}}/900/400" alt="random image" />
+                            <img class="img-fluid rounded" src="https://picsum.photos/seed/{{p.pk}}/1200/400" alt="random image" />
                             {% endif %}
                         </figure>
                     </div>
-                    <!-- Post header-->
-                    <div class="mb-4">
-                        <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{ p.title }}</h1>
-                        <hr>
-                    </div>
-                    <div class="mb-2 post-info">
-                        by {{ p.author | upper }} {{ p.created_at | date:"Y-m-d h:m:s" }}
-                    </div>
-                    <div class="container">
-                        <!-- file -->
-                        {% if post.file_upload %}
-                            <a href="{{post.file_upload.url}}" class="btn btn-outline-dark float-right mb-3" role="button" download>
-                                File Download {{p.get_file_name}}
-                            </a>
-                        {% endif %}
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="m-5" id="list_context">
+                                <div class="mt-5 post-info">
+                                    {{ p.created_at | date:"Y-m-d h:m:s" }}
+                                </div>
+                                <div class="mt-1 post-info" style="font-size: 2em; color: #0c2238;">
+                                    {{ p.author | upper }}
+                                </div>
+                                <hr>
+                                <!-- Post title-->
+                                <div class="mt-5" style="color: #0c2238;">
+                                    <h1 class="fw-bolder mb-1">{{ p.title }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="m-5 text-center">
+                                <a class="btn btn-outline-secondary btn-lg btn-block" role="button"
+                                href="{{ p.get_absolute_url }}">
+                                    <span style="color: white; text-size: 3em;">  보러가기  </span></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
