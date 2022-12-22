@@ -3,6 +3,44 @@
 
 {% block p_title %} Study_with_US {% endblock %}
 
-{% block main %} 
-    목록페이지
+{% block main %}
+    <div id="post-area">
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                {% for p in post_list %}
+                <div class="container">
+                <!-- Post content-->
+                    <div class="container">
+                        <!-- Preview image figure-->
+                        <figure class="mb-4">
+                            {% if p.image %}
+                            <img class="img-fluid rounded" src="{{ p.image.url }}" alt="{{post.title}}의 image" />
+                            {% else %}
+                            <img class="img-fluid rounded" src="https://picsum.photos/seed/{{post.pk}}/900/400" alt="random image" />
+                            {% endif %}
+                        </figure>
+                    </div>
+                    <!-- Post header-->
+                    <div class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">{{ p.title }}</h1>
+                        <hr>
+                    </div>
+                    <div class="mb-2 post-info">
+                        by {{ p.author | upper }} {{ p.created_at | date:"Y-m-d h:m:s" }}
+                    </div>
+                    <div class="container">
+                        <!-- file -->
+                        {% if post.file_upload %}
+                            <a href="{{post.file_upload.url}}" class="btn btn-outline-dark float-right mb-3" role="button" download>
+                                File Download {{p.get_file_name}}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
