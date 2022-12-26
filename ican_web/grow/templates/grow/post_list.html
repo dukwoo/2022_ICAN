@@ -6,10 +6,10 @@
 {% block main %}
     <div id="post-area">
         <!-- Page content-->
-        <div class="container m-5">
+        <div class="container my-5">
             <div class="row">
                 {% for p in post_list %}
-                <div class="container rounded-3 m-5" id="list" style="background-color: #aac2ad">
+                <div class="container rounded-3 mb-5" id="list" style="background-color: #aac2ad">
                 <!-- Post content-->
                     <!-- Preview image figure-->
                     <div class="text-center" id="list_image">
@@ -27,12 +27,12 @@
                                 <div class="mt-5 post-info">
                                     {{ p.created_at | date:"Y-m-d h:m:s" }}
                                 </div>
-                                <div class="mt-1 post-info" style="font-size: 2em; color: #0c2238;">
+                                <div class="mt-1 post-info listAuthor" style="font-size: 2em; color: #0c2238;">
                                     {{ p.author | upper }}
                                 </div>
                                 <hr>
                                 <!-- Post title-->
-                                <div class="mt-5" style="color: #0c2238;">
+                                <div class="mt-5 listTitle" style="color: #0c2238;">
                                     <h1 class="fw-bolder mb-1">{{ p.title }}</h1>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
         </div>
         {% if is_paginated %}
         <!-- Pagination -->
-        <ul class="pagination pagination-lg justify-content-center mb-4">
+        <ul class="pagination pagination-sm justify-content-center mb-4">
             {% if page_obj.has_next %}
                 <li class="page-item">
                     <a class="page-link" href="?page={{ page_obj.next_page_number }}">
