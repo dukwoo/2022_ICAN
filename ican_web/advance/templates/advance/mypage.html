@@ -10,12 +10,15 @@
       <div class="col-lg-6 text-light" id="main-area">
         <p style="font-size: 70px; font-weight: bold; margin-top: 100px;">MY PAGE</p>
         <h5>username : {{user.username}}</h5>
-        <h5>email :
+        <h5 style="margin-bottom: 60px;">email :
         {{user.email}}
         </h5>
       </div>
 
 
+    </div>
+    <div style="margin-bottom: 60px;">
+      {% include 'advance/calendar.html' %}
     </div>
   </div>
   </section>
