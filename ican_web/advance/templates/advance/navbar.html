@@ -10,43 +10,30 @@
         </a>
     </div>
     <ul class="list-unstyled py-4">
-        <li class="pb-3">
-            권민정
-            <div class="li-nav py-1">
-                CSS
-            </div>
-            <div class="li-nav py-1">
-                Javascripts
-            </div>
-        </li>
-        <li class="py-3">
-            김지현
-            <div class="li-nav py-1">
-                3D
-            </div>
-        </li>
-        <li class="py-3">
-            오윤지
-            <div class="li-nav py-1"> 
-                Python
-            </div>
-        </li>
-        <li class="py-3">    
-            조수인
-            <div class="li-nav py-1">
-                Python
-            </div>
-        </li >
+      {% for category in categories %}
+        <a href="{{ category.get_absolute_url }}" style="text-decoration-line: none; ">
+          <li class="li-nav pb-3 py-3">
+            {{ category }} 
+            <span class="count">({{ category.post_set.count }})</span>
+          </li>
+        </a>
+      {% endfor %}
+        <!--<li class="pb-3 py-3">
+          <a href="/grow/category/no_category/">
+            미분류 ({{ no_category_post_count }})
+          </a>
+        </li>-->
     </ul>
 
     <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #C730F5;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" 
+              aria-haspopup="true" aria-expanded="false" style="color: #C730F5;">
                 {{user.username}}
               </a>
-              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" style="color: #C730F5;" href="/accounts/logout/">LogOut</a>
+              <div class="dropdown-menu bg-white" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" style="color: #C730F5; font-size:13px;" href="/accounts/logout/">LogOut</a>
               </div>
           </li>
 

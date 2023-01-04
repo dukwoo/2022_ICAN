@@ -5,15 +5,13 @@ nav {
     background-color: white;   
 }
 
-
-
 span {
     color:skyblue;
-    font-size:18px;
+    font-size:20px;
     font-weight: bold;
 }
 
-li {
+li, .count {
     color: #757575;
     padding-left: 20px;
     font-size: 13px;
@@ -21,12 +19,12 @@ li {
 
 .li-nav {
     color:black;
-    padding-left: 20px;   
+    margin-left: 20px;   
     font-size: 18px;
 }
 
 #btn_mypage {
-    width:180px;
+    width:200px;
 }
 
 #footer {
