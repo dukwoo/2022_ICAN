@@ -5,6 +5,13 @@ nav {
     background-color: white;   
 }
 
+@media (max-width: 400px) {
+  .nav{
+    width: 100%;
+  }
+}
+
+
 span {
     color:skyblue;
     font-size:20px;
